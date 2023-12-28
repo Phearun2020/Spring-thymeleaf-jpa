@@ -18,6 +18,7 @@ import itc.i4gic.demo_jpa.service.BookService;
 
 
 
+
 @Controller
 public class BookController {
 
@@ -52,6 +53,12 @@ public class BookController {
       Book b= service.getBookById(id);
       model.addAttribute("book", b);
       return "bookEdit";
+   }
+
+   @RequestMapping("/deleteBook/{id}")
+   public String deleteBook(@PathVariable("id") int id, Model model) {
+      service.deleteById(id);
+      return "redirect:/available_books";
    }
    
 }
